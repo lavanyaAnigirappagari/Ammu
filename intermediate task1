@@ -1,0 +1,16 @@
+from transformers import pipeline
+chatbot = pipeline("conversational")
+
+def ai_chatbot():
+    print("AI Chatbot: Hello! I'm your AI chatbot. How can I assist you today?")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == 'exit':
+            print("AI Chatbot: Goodbye! Have a nice day.")
+            break
+        else:
+            response = chatbot(user_input)[0]['generated_text']
+            print("AI Chatbot:", response)
+
+if __name__ == "__main__":
+    ai_chatbot()
